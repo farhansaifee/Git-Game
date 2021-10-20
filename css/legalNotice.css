@@ -1,0 +1,21 @@
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    width: 100%;
+  
+    
+    align-items: center;
+    background-color: white;
+}
+
+#legalNoticeTitle {
+    text-align: center;
+    color: black;
+}
+
+#lppTeam {
+    margin-bottom: 5px;
+}
+
+#lppTeamTable {
+    width: 50%;
+}

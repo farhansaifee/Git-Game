@@ -1,0 +1,107 @@
+.section {
+    background-color: #FFFFFF;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 10px !important;
+    color: black;
+}
+
+ul>li {
+    background-color: #e5e5e5 !important;
+}
+
+.profileImage {
+    background-color: white !important;
+    width: 150px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    position: relative !important;
+}
+
+.reset {
+    margin-left: 5%;
+    padding-top: 10%;
+    padding: 5px;
+    background-size: auto;
+    border-radius: 50%;
+}
+
+.reset:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.editIcon {
+    padding: 5px;
+    background-color: rgb(160, 155, 152, 0.7);
+    background-size: auto;
+    border-radius: 50%;
+    position: absolute !important;
+    top: 85% !important;
+    right: 20% !important;
+}
+
+.editIcon:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.section-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+    background-color: #e5e5e5;
+    border-radius: 10px !important;
+}
+
+.section-body input {
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+hr.new {
+    border-top: 3px solid black;
+}
+
+#saveButton {
+    margin-bottom: 5px;
+}
+
+#gender {
+    padding: 3px;
+    max-width: 180px;
+    color: rgb(26, 25, 25, 0.7);
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+option:not(:first-of-type) {
+    color: rgb(0, 0, 0);
+}
+
+@media only screen and (max-width: 1000px) {
+    #saveChanges {
+        margin-top: 15px;
+    }
+
+    .editIcon {
+        top: 45% !important;
+        right: 30% !important;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    #userData {
+        padding-top: 30px;
+    }
+    .editIcon {
+        top: 45% !important;
+        right: 40% !important;
+    }
+}

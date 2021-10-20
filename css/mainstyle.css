@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Dashboard*/
+
+body {
+    background-color: #fff;
+}
+
+.page-container {
+    position: relative;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.content-wrap {
+    /* Footer height */
+    padding-bottom: 2.5rem;
+}
+
+.popup {
+    display: none;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 6px 6px 3px #555;
+    width: 80%;
+    left: 10%;
+    top: 30px;
+    text-align: center;
+    padding: 5px 10px;
+    position: fixed;
+    z-index: 2;
+}
+
+@media only screen and (min-width: 1000px) {
+    .popup {
+        width: 40%;
+        left: 30%;
+    }
+}
+
+.openbtn {
+    position: absolute;
+    top: 15px;
+    left: 90px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Footer height */
+    height: 2.5rem;
+    background-color: #e5e5e5;
+    padding-top: 5px;
+}
+
+.footer a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.main {
+    padding: 120px 0 0 0;
+    text-align: center;
+}
+
+.login input, .login select {
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #fca311;
+    color: #fff;
+    padding: 5px;
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
+.min-height {
+    min-height: 450px;
+}
+
+@media only screen and (min-width: 1000px) {
+    .left {
+        margin-left: 12.5%;
+        float: left;
+        width: 400px;
+    }
+    .right {
+        margin-left: 57.5%;
+        width: 300px;
+    }
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.login a:first-child {
+    font-size: 12px;
+    color: #e5e5e5;
+}
+
+.login-button {
+    background-color: transparent;
+    color: #fca311;
+    border: 1px solid #fca311;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+
+.login-button:hover {
+    background-color: #fca311;
+    color: #14213d;
+    border: 1px solid transparent;
+}
+
+.debug-top-right {
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: white;
+    color: #14213d;
+}
+
+.confirmation-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 50;
+}
+
+.confirmation-window>div {
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.confirmation-window>div>span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.confirmation-window button {
+    border: none;
+    float: right;
+}
+
+.confirmation-window button:first-child {
+    float: left;
+}
