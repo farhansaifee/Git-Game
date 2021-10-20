@@ -1,0 +1,88 @@
+.card {
+    background-color: #14213d;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+    color: #fff;
+    -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (min-width: 1000px) {
+    .left {
+        margin-left: 12.5%;
+        float: left;
+        width: 400px;
+    }
+    .right {
+        margin-left: 57.5%;
+        width: 300px;
+    }
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.name {
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #fca311;
+    font-weight: 700;
+}
+
+.name:hover {
+    text-decoration: none;
+    color: #e5e5e5;
+}
+
+.head {
+    margin-bottom: 5px;
+    color: #fca311;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.rec {
+    color: #fff;
+}
+
+.rec:hover {
+    background-color: #fca311;
+    color: #14213d;
+    cursor: pointer;
+}
+
+.last {
+    background-color: #e5e5e5;
+    color: #14213d;
+}
+
+.last:hover {
+    background-color: #14213d;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button {
+    display: inline-block;
+    padding: 5px;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fca311;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    border: 1px solid transparent;
+    background-color: #fff;
+    color: #14213d;
+    text-decoration: none;
+}

@@ -1,0 +1,98 @@
+<?php
+session_start();
+
+function alert($msg)
+{ //alert does not work with header, it wont be saved after refreshing the page
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+
+function popup($msg)
+{
+    echo "<script type='text/javascript'>popup('$msg');</script>";
+}
+
+include_once 'utility/DateTimeExt.class.php';
+include_once 'model/User.class.php';
+include_once 'utility/DB.class.php';
+include_once 'utility/PW.class.php';
+
+$menu = isset($_GET["menu"]) ? $_GET["menu"] : NULL;
+
+$db = new DB();
+include_once 'utility/preHeader.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Game</title>
+    <!-- JS -->
+    <!-- CSS -->
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="content-wrap">
+
+            <?php
+            if (isset($popup) && !empty($popup)) popup($popup);
+            //DEBUG //shows UserID in top right corner if a user is logged in
+            if (isset($_SESSION["user"]["ID"])) {
+                $user = $db->getUser($_SESSION["user"]["ID"]);
+                echo "<script>var AUTH_TOKEN=\"{$_SESSION['user']['token']}\"; var USERID={$_SESSION['user']['ID']};</script>";
+                echo
+                "<div class='debug-top-right'>{$user->getUsername()}
+                    <i class='bi bi-person-fill'></i>
+                    <span id='user_id' style='display:none;'>{$_SESSION["user"]["ID"]}</span> 
+                    <form action='index.php' method='post'>
+                        <input type='hidden' name='method' value='logout' ><input type='submit' value='Logout' class='btn btn-danger btn-sm'>
+                    </form>
+                </div>";
+            }
+
+            if (isset($menu) && $menu != 'main')
+                include 'include/sidenav.php';
+
+            switch ($menu) {
+                case 'main':
+                    include 'include/main.php';
+                    break;
+                case 'game':
+                    include 'include/game.php';
+                    break;
+                case 'highscore':
+                    include 'include/highscore.php';
+                    break;
+                case 'profile':
+                    include 'include/profile.php';
+                    break;
+                case 'help':
+                    include 'include/help.php';
+                    break;
+                case 'legalNotice':
+                    include 'include/legalNotice.php';
+                    break;
+                default:
+                    include 'include/main.php';
+                    break;
+            }
+            ?>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-5"> <a href="index.php?menu=legalNotice">Legal Notice</a></div>
+                    <div class="col-5"> <a href="index.php?menu=help">Help</a> </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>
