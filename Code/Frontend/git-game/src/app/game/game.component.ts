@@ -11,5 +11,8 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  game = [
+    {'id':1, 'name':'GIT', 'description':'Learn how to Git', 'image':'../../assets/git.jpg'}
+  ]
 
 }
