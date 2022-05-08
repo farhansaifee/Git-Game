@@ -1,0 +1,9 @@
+[root@your server]# command 1
+this is the first line of output for command1
+this is the second line of output for command1
+[root@your server]# command 2
+this is the first line of output for command2
+this is the second line of output for command2
+this is the third line of output for command2
+this is the fourth line of output for command2
+[root@your server]# end of the simulation

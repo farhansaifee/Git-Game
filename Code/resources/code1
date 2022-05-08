@@ -1,0 +1,65 @@
+PS C:\> ls
+
+
+    Directory: C:\
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----         7/6/2020   5:57 PM                dkc200
+d-----         9/6/2018   2:50 PM                HP
+-a----        12/1/2006  11:37 PM         904704 msdia80.dll
+
+
+PS C:\> pwd
+
+Path
+----
+C:\
+
+
+PS C:\> cd dkc200
+PS C:\DKC200> ls
+
+
+    Directory: C:\DKC200
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----         7/6/2020   5:32 PM                mp
+d-----         7/6/2020   5:57 PM                others
+
+
+PS C:\DKC200> pwd
+
+Path
+----
+C:\DKC200
+
+
+PS C:\DKC200> cd ..
+PS C:\> cd HP
+PS C:\HP> ls
+
+
+    Directory: C:\HP
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/23/2018   3:33 PM                CCMClient
+d-----        3/14/2019   2:25 PM                drivers
+d-----        1/29/2020  11:39 AM                IT
+d-----        8/23/2018   3:33 PM                PCSetup
+
+
+PS C:\HP> pwd
+
+Path
+----
+C:\HP
+
+
+PS C:\HP> cd ..
+PS C:\>

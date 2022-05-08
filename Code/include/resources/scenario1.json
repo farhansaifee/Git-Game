@@ -1,0 +1,117 @@
+{
+  "title": "Simple ls / cd / pwd demo",
+  "cols": 120,
+  "rows": 20,
+  "bgClassHeader": "bg-blue",
+  "bgClassBody": "bg-hpe25gray",
+  "fontScale": "small",
+  "simulationState": [
+    {
+      "stateName": "start",
+      "prompt": "PS C:\\> ",
+      "tooltip": "<h2>Welcome to this terminal simulation.</h2> <p>This area is a tooltip section where you find instructions on which commands can be executed during the simulation</p> <div class='HPE_Tip'><p><strong>Tip:</strong> You can copy paste commands from the tooltip into the terminal if you do not lke typing.<br>After typing several commands, it is possible to cycle through previous commands by using the up and down arrow keys.</p></div> <p>Get started by typing the <code>ls</code> command to list the folder content.",
+      "errorMsg": "This command is not allowed or incorrect at this stage of the simulation.",
+      "availableCommands": [
+        {
+          "commandLineId": "1",
+          "outputLineRange": "2-13",
+          "nextState": "top"
+        },
+        {
+          "commandLineId": "14",
+          "outputLineRange": "15-20",
+          "nextState": "top"
+        },
+        {
+          "commandLineId": "21",
+          "outputLineRange": "",
+          "nextState": "insideDKC200"
+        },
+        {
+          "commandLineId": "42",
+          "outputLineRange": "",
+          "nextState": "insideHP"
+        }
+      ]
+    },
+    {
+      "stateName": "top",
+      "prompt": "PS C:\\> ",
+      "tooltip": "<h2>You are at the root directory.</h2> <p>You can use the <code>ls</code> command to list the folder content <br>Use the <code>pwd</code> command to check the current path. <br> use the <code>cd</code> command to change to another directory.</p>",
+      "errorMsg": "This command is not allowed or incorrect at this stage of the simulation.",
+      "availableCommands": [
+        {
+          "commandLineId": "1",
+          "outputLineRange": "2-13"
+        },
+        {
+          "commandLineId": "14",
+          "outputLineRange": "15-20"
+        },
+        {
+          "commandLineId": "21",
+          "outputLineRange": "",
+          "nextState": "insideDKC200"
+        },
+        {
+          "commandLineId": "42",
+          "outputLineRange": "",
+          "nextState": "insideHP"
+        }
+      ]
+    },
+    {
+      "stateName": "insideDKC200",
+      "prompt": "PS C:\\DKC200> ",
+      "tooltip": "<h2>You are now inside the dkc200 folder</h2><p>In this sub directory you can still use the ls, pwd and cd commands.</p><div class='HPE_Note'><strong>Note: </strong>This simulation does not allow you to reach any of the subfolders</div>",
+      "errorMsg": "This command is not allowed or not valid in this subdirectory",
+      "availableCommands": [
+        {
+          "commandLineId": "22",
+          "outputLineRange": "23-33",
+          "nextState": ""
+        },
+        {
+          "commandLineId": "34",
+          "outputLineRange": "35-40",
+          "nextState": ""
+        },
+        {
+          "commandLineId": "41",
+          "outputLineRange": "",
+          "nextState": "top"
+        }
+      ]
+    },
+    {
+      "stateName": "insideHP",
+      "prompt": "PS C:\\HP> ",
+      "tooltip": "<h2>You are now inside the HP folder</h2><p>In this sub directory you can still use the ls, pwd and cd commands.</p><div class='HPE_Note'><strong>Note: </strong>This simulation does not allow you to reach any of the subfolders</div>",
+      "errorMsg": "This command is not allowed or not valid in this subdirectory",
+      "availableCommands": [
+        {
+          "commandLineId": "43",
+          "outputLineRange": "44-56",
+          "nextState": ""
+        },
+        {
+          "commandLineId": "57",
+          "outputLineRange": "58-63",
+          "nextState": ""
+        },
+        {
+          "commandLineId": "64",
+          "outputLineRange": "",
+          "nextState": "top"
+        }
+      ]
+    },
+    {
+      "stateName": "end",
+      "prompt": "End of the simulation.",
+      "tooltip": "This is the end of the simulation for terminal 1",
+      "errorMsg": "This is the end of the simulation for terminal 1",
+      "availableCommands": []
+    }
+  ]
+}

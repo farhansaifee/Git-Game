@@ -1,0 +1,256 @@
+.card {
+    background-color: #14213d;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+    color: #fff;
+    -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card_ch {
+    background-color: #14213d;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    color: #fff;
+    -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card_ch:hover{
+    background-color: #fca311;
+    color: #000;
+}
+
+.card_chal{
+    background-color: #14213d;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    min-height: 100px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    color: #fff;
+    -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+    padding-bottom: 60px;
+}
+
+@media only screen and (min-width: 1000px) {
+    .left {
+        margin-left: 12.5%;
+        float: left;
+        width: 400px;
+    }
+    .right {
+        margin-left: 57.5%;
+        width: 300px;
+    }
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.name {
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #fca311;
+    font-weight: 700;
+}
+
+.name:hover {
+    text-decoration: none;
+    color: #e5e5e5;
+}
+
+.head {
+    margin-bottom: 5px;
+    color: #fca311;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.rec {
+    color: #fff;
+}
+
+.rec:hover {
+    background-color: #fca311;
+    color: #14213d;
+    cursor: pointer;
+}
+
+.last {
+    background-color: #e5e5e5;
+    color: #14213d;
+}
+
+.last:hover {
+    background-color: #14213d;
+    color: #fff;
+    cursor: pointer;
+}
+
+.back-button {
+    background-color: transparent;
+    color: #fca311;
+    border: 1px solid #fca311;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    float: right;
+    margin-bottom: 5px;
+}
+
+.back-button:hover {
+    background-color: #fca311;
+    color: #14213d;
+    border: 1px solid transparent;
+}
+
+#window {
+  border-radius: 3px;
+  background: #222;
+  color: #fff;
+  overflow-y: scroll;
+  position: relative;
+  margin: 20px auto;
+  max-width: 70%;
+  height: 500px;
+}
+#window:before {
+  content: ' ';
+  display: block;
+  height: 48px;
+  background: #C6C6C6;
+}
+#window:after {
+  content: '. . .';
+  position: absolute;
+  left: 12px;
+  right: 0;
+  top: -3px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 96px;
+  color: #fff;
+  line-height: 0;
+  letter-spacing: -12px;
+}
+.terminal-new {
+  font-family: monospace;
+  font-size: 16px;
+  color: #22da26;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+.terminal-new .command {
+  white-space: nowrap;
+  overflow: hidden;
+   animation: write-command 5s both; 
+}
+.terminal-new .command:before {
+  content: '~$ ';
+  color: #22da26;
+}
+.yser-command{
+  color: #22da26 !important;
+}
+.terminal-new .log {
+  white-space: nowrap;
+  overflow: hidden;
+   animation: write-log 5s both; 
+}
+.terminal-new p:nth-child(2) {
+  animation-delay: 2s;
+}
+.terminal-new p:nth-child(3) {
+  animation-delay: 8s;
+}
+@keyframes write-command {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes write-log {
+  0% {
+    height: 0;
+  }
+  16% {
+    height: 0;
+  }
+  17% {
+    height: 18px;
+  }
+  33% {
+    height: 18px;
+  }
+  34% {
+    height: 37px;
+  }
+  51% {
+    height: 37px;
+  }
+  52% {
+    height: 55px;
+  }
+  69% {
+    height: 55px;
+  }
+  70% {
+    height: 74px;
+  }
+  87% {
+    height: 74px;
+  }
+  88% {
+    height: 92px;
+  }
+  88% {
+    height: 92px;
+  }
+  99% {
+    height: 92px;
+  }
+  100% {
+    height: 110px;
+  }
+}
+#span-answer{
+  color: #22da26;
+}
+
+#answer{
+  background-color: inherit;
+  border: none;
+  color: #22da26;
+  width: 600px;
+}
+
+.challenge-buttons{
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+.challenge-buttons button:first-of-type{
+  margin-right: 20px;
+}
+.total-tasks{
+  flex: 1;
+}

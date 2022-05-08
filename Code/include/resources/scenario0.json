@@ -1,0 +1,43 @@
+{
+  "title": "terminal simulation 0",
+  "cols": 80,
+  "rows": 20,
+  "bgClassHeader": "bg-blue",
+  "bgClassBody": "bg-black",
+  "fontScale": "medium",
+  "simulationState": [
+    {
+      "stateName": "start",
+      "prompt": "[root@your server]# ",
+      "tooltip": "Instructions for state 1 -  type this command: <br><code>command 1</code>",
+      "errorMsg": "That is not an appropriate command to run in this state. Please check the instructions from the tooltip.",
+      "availableCommands": [
+        {
+          "commandLineId": "1",
+          "outputLineRange": "2-3",
+          "nextState": "state1"
+        }
+      ]
+    },
+    {
+      "stateName": "state1",
+      "prompt": "[root@your server]# ",
+      "tooltip": "Instructions for state 2 -  type this command:<br><code>command 2</code>",
+      "errorMsg": "error Message for state 2",
+      "availableCommands": [
+        {
+          "commandLineId": "4",
+          "outputLineRange": "5-6",
+          "nextState": "end"
+        }
+      ]
+    },
+    {
+      "stateName": "end",
+      "prompt": "End of the simulation.",
+      "tooltip": "This is the end of the simulation for terminal 1",
+      "errorMsg": "This is the end of the simulation for terminal 1",
+      "availableCommands": []
+    }
+  ]
+}
