@@ -3,7 +3,7 @@ $user = $db->getUser($_SESSION["user"]["ID"]);
 $challenges = $db->getAllChallenges();
 foreach($challenges as $challenge)
 ?>
-        <div class="container" id="dashboardContainer"> 
+        <div class="container" id="dashboardContainer">
             <?php
             $index = 1;
             foreach($challenges as $challenge){
@@ -14,11 +14,12 @@ foreach($challenges as $challenge)
             }
             ?>
         </div>
-        <?php 
+        <?php
         $index = 1;
+        //show all the challenges from the DB
         foreach($challenges as $challenge){
             echo "
-            <div class='container' id='Challenge_$index'> 
+            <div class='container' id='Challenge_$index'>
                 <div class='card_chal'>
                     <div>{$challenge["name"]}</div>
                     <div id='terminal{$index}'></div>
@@ -31,6 +32,8 @@ foreach($challenges as $challenge)
             </div>";
         $index++;
         }
+        // save the num of challenges in an input tag
+        // retrieve later in the JS side
         echo "<input type='hidden' id='totalNumOfChallenges' data-num='{$index}'  />"
         ?>
 
@@ -48,7 +51,7 @@ foreach($challenges as $challenge)
         Receiving objects: 100% (1857/1857), 374.35 KiB | 268.00 KiB/s, done.<br />
       </span>
     </p>
-    
+
     <p class="command"> Start your exercise by typing git commands</p>
     <p class="command"> TO SHOW HINT PRESS 1 IN CONSOLE</p>
     <div id="lastBreak"> </div>
@@ -58,10 +61,10 @@ foreach($challenges as $challenge)
 
       </div>
     <span id="span-answer">~$</span>
-    
+
     <input type="text" name="" id="answer"  >
     </div>
-    
+
   </div>
 </div>
 

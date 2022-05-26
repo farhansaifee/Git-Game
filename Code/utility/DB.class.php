@@ -55,7 +55,7 @@ class DB
         return 0;
     }
 
-    
+
 
 
     public function loginUser($username, $password)
@@ -87,7 +87,7 @@ class DB
         return $result;
     }
 
-    public function logoutUser($id) 
+    public function logoutUser($id)
     {
         $stmt = $this->conn->prepare("UPDATE user SET Token=null WHERE UserID=:id");
         $stmt->bindParam(':id', $id);
@@ -142,6 +142,24 @@ class DB
     {
         $data = array();
         $stmt = $this->conn->prepare("SELECT * FROM task WHERE challenge_id=:id");
+
+        $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() == 0) return $data = "NULL";
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            array_push($data, $row);
+        }
+
+        return $data;
+    }
+
+    public function getChallengeIdForUser($id)
+    {
+        $data = array();
+        $stmt = $this->conn->prepare("SELECT challenge_id FROM user_challenge WHERE user_id=:id");
 
         $stmt->bindParam(':id', $id);
 
@@ -232,9 +250,20 @@ class DB
         }
     }
 
+    public function editUserChallengePassed($user_id,$challenge_id){
+        $stmt = $this->conn->prepare("UPDATE user_challenge SET last_done_task=0, challenge_id=:challenge_id WHERE user_id=:user_id");
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':challenge_id', $challenge_id);
+        if ($stmt->execute()) {
+            return 0;
+        } else {
+            return -4;
+        }
+    }
+
     public function editUser($user)
     {
-        
+
         $oldUser = $this->getUser($_SESSION["user"]["ID"]);
         if ($oldUser == null) return -1;
 
@@ -291,7 +320,7 @@ class DB
             return true;
         }
     }
-    
+
     public function editAvatar($name, $id){
 
         $stmt = $this->conn->prepare("UPDATE user SET Avatar=:avatar WHERE UserId=:id");
@@ -320,5 +349,5 @@ class DB
         } else {
             echo "Diese Email ist nicht angemeldet";
         }
-    } 
+    }
 }

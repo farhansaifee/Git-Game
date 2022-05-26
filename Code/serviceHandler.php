@@ -22,6 +22,10 @@ if (isset($_GET["method"])) {
             $res = $db->getUserLeftTasks($_GET["user_id"],$_GET["challenge_id"]);
             response("GET",200,$res);
             break;
+        case "user_challenge_id":
+            $res = $db->getChallengeIdForUser($_GET["user_id"]);
+            response("GET",200,$res);
+            break;
     }
 }
 else if($method!=null && $method=="post_user_task"){
@@ -29,6 +33,12 @@ else if($method!=null && $method=="post_user_task"){
     $user_id = $_POST["user_id"];
     $challenge_id = $_POST["challenge_id"];
     $db->editUserChallenge($currentTask,$user_id,$challenge_id);
+    response("POST", 200, json_encode("Success"));
+}
+else if($method!=null && $method=="challenge_passed"){
+    $user_id = $_POST["user_id"];
+    $challenge_id = $_POST["challenge_id"];
+    $db->editUserChallengePassed($user_id,$challenge_id);
     response("POST", 200, json_encode("Success"));
 }
 else if($method!=null && $method=="reset_task"){
