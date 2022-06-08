@@ -8,10 +8,11 @@ require_once "utility/ErrorCodes.class.php";
 
 class DB
 {
-    public function __construct()
+    public function __construct($mail)
     {
         $connection = new connectDB();
         $this->conn = $connection->connect();
+        $this->mail = $mail;
     }
 
     public function createUserChallenge($user_id){
@@ -345,9 +346,49 @@ class DB
             $stmt->bindParam(':token', $token);
             $stmt->bindParam(':email', $email);
             $stmt->execute();
-            mail($email, "Passwort zurücksetzen", "".$token);
+            //Add recipient
+            $this->mail->addAddress('halkatran@gmail.com');
+            $bodyContent = '<h1>Reset password</h1>';
+            $bodyContent = '<br><p>Please enter the following token to reset password</p><p>';
+            $bodyContent .= $token;
+            $bodyContent.= '</p>';
+            $this->mail->Body = $bodyContent;
+            if(!$this->mail->send()){
+                return "Mail NOT sent".$this->mail->ErrorInfo;
+            }else{
+                $this->mail->clearAllRecipients();
+                return "Mail sent";
+            }
         } else {
-            echo "Diese Email ist nicht angemeldet";
+            return "Diese Email ist nicht angemeldet";
         }
+    } 
+
+    public function loginUserWithToken($token2, $password)
+    {
+        $stmt = $this->conn->prepare("SELECT UserID FROM user WHERE Token2 =:token2");
+
+        $stmt->bindParam(':token2', $token2);
+        
+        $stmt->execute();
+        $id = (int)$stmt->fetchColumn();
+
+        $result = array("token"=>null,"id"=>$id);
+
+        if ($id == false) {
+            $result["id"] = -1;
+            return $result;
+        }
+
+        $hashedPW = hash('sha256', $password);
+        $token = PW::generate();
+        $stmt = $this->conn->prepare("UPDATE user SET Token=:token, Password=:password WHERE UserID=:id");
+        $stmt->bindParam(':token', $token);
+        $stmt->bindParam(':password',$hashedPW);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $result["token"] = $token;
+        return $result;
     }
 }

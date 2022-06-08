@@ -16,9 +16,35 @@ include_once 'model/User.class.php';
 include_once 'utility/DB.class.php';
 include_once 'utility/PW.class.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+$mail = new PHPMailer(true);
+$mail->isSMTP();
+$mail->Host='smtp.gmail.com';
+$mail->SMTPAuth = true;
+$mail->Username = 'gitgame2022@gmail.com';
+$mail->Password = 'klsgeewmmudulgps';
+$mail->SMTPSecure='tls';
+$mail->Port = 587;
+
+//Sender info
+$mail->From = 'gitgame2022@gmail.com';
+$mail->FromName = 'GitGame GitGame';
+
+//Set email format to html
+$mail->isHTML(true);
+
+//Mail subject
+$mail->Subject = 'Email for reseting password GitGame';
+
 $menu = isset($_GET["menu"]) ? $_GET["menu"] : NULL;
 
-$db = new DB();
+$db = new DB($mail);
 include_once 'utility/preHeader.php';
 ?>
 
@@ -95,6 +121,9 @@ include_once 'utility/preHeader.php';
                     break;
                 case 'contact':
                     include 'include/contact.php';
+                    break;
+                case 'searchResult':
+                    include 'include/searchResult.php';
                     break;
                 default:
                     include 'include/main.php';

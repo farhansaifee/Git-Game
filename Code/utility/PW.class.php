@@ -68,7 +68,8 @@ class PW {
         if (PW::check($string) != 0) {
             return false;
         }
-        return !preg_match('/[^A-Za-z0-9\.\-_]/', $string);
+        return true;
+        // return !preg_match('/[^A-Za-z0-9\.\-_]/', $string);
     }
 
     public static function myhash($value) {

@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $("#second").hide();
     $("#third").hide();
+    $("#fourth").hide();
 
     $("#change").click(function () {
         $("#first").toggle();
@@ -17,6 +18,29 @@ $(document).ready(function () {
     $("#goback2").click(function () {
         $("#first").toggle();
         $("#third").toggle();
+    });
+    $("#goback21").click(function () {
+        $("#first").toggle();
+        $("#fourth").toggle();
+    });
+    // send email
+    $("#send-pass-btn").click(function () {
+        let email = $("#emailresetpass").val();
+        $.ajax({
+            type: "POST",
+            url: "serviceHandler.php",
+            cache: false,
+            data: { method: "chanege_pass", email },
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                $("#third").toggle();
+                $("#fourth").toggle();
+            },
+            error: function (error) {
+              console.log(error)
+            }
+          });
     });
 });
 

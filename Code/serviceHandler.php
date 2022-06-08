@@ -4,7 +4,33 @@ require_once "utility/ErrorCodes.class.php";
 
 require_once "utility/DB.class.php";
 
-$db = new DB();
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+$mail = new PHPMailer(true);
+$mail->isSMTP();
+$mail->Host='smtp.gmail.com';
+$mail->SMTPAuth = true;
+$mail->Username = 'gitgame2022@gmail.com';
+$mail->Password = 'klsgeewmmudulgps';
+$mail->SMTPSecure='tls';
+$mail->Port = 587;
+
+//Sender info
+$mail->From = 'gitgame2022@gmail.com';
+$mail->FromName = 'GitGame GitGame';
+
+//Set email format to html
+$mail->isHTML(true);
+
+//Mail subject
+$mail->Subject = 'Email for reseting password GitGame';
+
+$db = new DB($mail);
 
 $method = isset($_POST["method"]) ? $_POST["method"] : null;
 $data = isset($_POST["data"]) ? $_POST["data"] : null;
@@ -46,6 +72,11 @@ else if($method!=null && $method=="reset_task"){
     $challenge_id = $_POST["challenge_id"];
     $db->editUserChallenge(0,$user_id,$challenge_id);
     response("POST", 200, json_encode("Success"));
+}
+else if($method!=null && $method=="chanege_pass"){
+    $email = $_POST["email"];
+    $result = $db->changePassword($email);
+    response("POST", 200, json_encode($result));
 }
 else {if ($result == null) {
     response("POST", 400, null);

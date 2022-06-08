@@ -81,6 +81,20 @@ if (isset($_POST["method"])) {
                 $popup = "Invalid username and password combination.";
             }
         }
+    }else if($_POST["method"] == "reset_password"){
+        if (isset($_POST["token"]) && isset($_POST["password"])) {
+            $password = $_POST["password"];
+            $token = $_POST["token"];
+            $result = $db->loginUserWithToken($token,$password);
+            if ($result["id"] >= 0) {
+                $token = PW::generate();
+                $_SESSION["user"]["ID"] = $result["id"];
+                $_SESSION["user"]["token"] = $result["token"];
+                header("Location: index.php?menu=dashboard");
+            } else {
+                $popup = "Token or password is invalid.";
+            }
+        }
     } else if ($_POST["method"] == "logout") {
         if (isset($_SESSION["user"])) {
             $db->logoutUser($_SESSION["user"]["ID"]);
