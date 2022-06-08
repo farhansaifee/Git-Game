@@ -347,7 +347,7 @@ class DB
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             //Add recipient
-            $this->mail->addAddress('halkatran@gmail.com');
+            $this->mail->addAddress($email);
             $bodyContent = '<h1>Reset password</h1>';
             $bodyContent = '<br><p>Please enter the following token to reset password</p><p>';
             $bodyContent .= $token;

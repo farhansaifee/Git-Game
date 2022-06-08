@@ -4,14 +4,14 @@ $(document).ready(function(){
     const searchInput = urlParams.get('searchInput');
     $("#search-bar").val(searchInput);
         let git_commands = ["git push","git stash","git commit","git merge", "git add", "git branch", "git checkout", "git clean", "git clone", "git commit --amend", "git config", "git fetch", "git init", "git log", "git pull", "git rebase", "git rebase -i", "git reflog", "git remote", "git reset",
-        "git revert", "git status"]
+        "git revert", "git status", "git diff", "git rm", "git show", "git tag", "git switch", "git worktree", "git submodule", "git describe", "git gc"]
         let git_explain = ["The git push command is used to upload local repository content to a remote repository.",
         "Use git stash when you want to record the current state of the working directory and the index, but want to go back to a clean working directory.",
         "The commit command is used to save your changes to the local repository.",
         "Incorporates changes from the named commits (since the time their histories diverged from the current branch) into the current branch. ",
         "Moves changes from the working directory to the staging area. This gives you the opportunity to prepare a snapshot before committing it to the official history.",
         "This command is your general-purpose branch administration tool. It lets you create isolated development environments within a single repository.",
-        "In addition to checking out old commits and old file revisions, git checkout is also the means to navigate existing branches. Combined with the basic Git commands, it’s a way to work on a particular line of development.",
+        "In addition to checking out old commits and old file revisions, git checkout is also the means to navigate existing branches. Combined with the basic Git commands, it is a way to work on a particular line of development.",
         "Removes untracked files from the working directory. This is the logical counterpart to git reset, which (typically) only operates on tracked files.",
         "Creates a copy of an existing Git repository. Cloning is the most common way for developers to obtain a working copy of a central repository.",
         "Passing the --amend flag to git commit lets you amend the most recent commit. This is very useful when you forget to stage a file or omit important information from the commit message.",
@@ -26,7 +26,16 @@ $(document).ready(function(){
         "A convenient tool for administering remote connections. Instead of passing the full URL to the fetch, pull, and push commands, it lets you use a more meaningful shortcut.",
         "Undoes changes to files in the working directory. Resetting lets you clean up or completely remove changes that have not been pushed to a public repository.",
         "Undoes a committed snapshot. When you discover a faulty commit, reverting is a safe and easy way to completely remove it from the code base.",
-        "Displays the state of the working directory and the staged snapshot. You will want to run this in conjunction with git add and git commit to see exactly what’s being included in the next snapshot."
+        "Displays the state of the working directory and the staged snapshot. You will want to run this in conjunction with git add and git commit to see exactly what is being included in the next snapshot.",
+        "This command shows the file differences which are not yet staged.",
+        "This command deletes the file from your working directory and stages the deletion.",
+        "This command shows the metadata and content changes of the specified commit.",
+        "This command is used to give tags to the specified commit.",
+        "Switch to a specified branch. The working tree and the index are updated to match the branch. All new commits will be added to the tip of this branch.",
+        "Manage multiple working trees attached to the same repository.",
+        "Inspects, updates and manages submodules.",
+        "The command finds the most recent tag that is reachable from a commit. If the tag points to the commit, then only the tag is shown. Otherwise, it suffixes the tag name with the number of additional commits on top of the tagged object and the abbreviated object name of the most recent commit. The result is a 'human-readable' object name which can also be used to identify the commit to other git commands.",
+        "Cleanup unnecessary files and optimize the local repository."
     ];
     for(let i=0;i<git_commands.length;i++){
         let command = git_commands[i];
