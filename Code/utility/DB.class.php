@@ -391,4 +391,17 @@ class DB
         $result["token"] = $token;
         return $result;
     }
+
+    public function updateUserScore($user_id, $score){
+
+        $stmt = $this->conn->prepare("UPDATE user SET Score=Score + :score WHERE UserID=:userid");
+        $stmt->bindParam(':score', $score);
+        $stmt->bindParam(':userid', $user_id);
+        if ($stmt->execute()) {
+            return 0;
+        } else {
+            return -4;
+        }
+        
+    }
 }

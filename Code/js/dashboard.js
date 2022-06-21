@@ -9,6 +9,7 @@ let tasks=[];
 let solutions = [];
 let currentTask=0;
 let finalTask;
+let score = 100;
 $(document).ready(function () {
 
 // get status of USER
@@ -46,6 +47,9 @@ $(document).ready(function () {
                        const finishedTasksMessage = `YOU HAVE FINISHED ${currentTask} TASKS  FOR
                        THIS CHALLENGE SO FAR`;
                        $(`#total_tasks_${CHALLENGE_ID}`).append(finishedTasksMessage);
+                       const progressBar = `<progress value="${currentTask}" max="${finalTask}" min="0"> ${currentTask}% </progress>`;
+                       $(`#progress_${CHALLENGE_ID}`).append(progressBar);
+
                        for(let i =currentTask;i<tasks.length;i++){
                            const task = tasks[i];
                            $("#questions").append(`
@@ -146,6 +150,7 @@ $(document).ready(function () {
         if(e.which == 13) {
             let answer = $("#answer").val();
             if(answer=="1"){
+                score -= 20;
                 $(`#task-hint_${currentTask}`).toggle();
                 $(`<div class="user-command">~$ ${$("#answer").val()}</div>`).insertBefore('#lastBreak');
             }else if (answer==solutions[currentTask][0]){
@@ -165,11 +170,14 @@ $(document).ready(function () {
                      THIS CHALLENGE SO FAR`;
                  $(`#total_tasks_${CHALLENGE_ID}`).empty();
                  $(`#total_tasks_${CHALLENGE_ID}`).append(finishedTasksMessage);
+                 const progressBar = `<progress value="${currentTask}" max="${finalTask}" min="0"> ${currentTask}% </progress>`;
+                 $(`#progress_${CHALLENGE_ID}`).empty();
+                 $(`#progress_${CHALLENGE_ID}`).append(progressBar);
                 $.ajax({
                     type: "POST",
                     url: "serviceHandler.php",
                     cache: false,
-                    data: { method: "post_user_task", ...{currentTask,"user_id":USERID,"challenge_id":CHALLENGE_ID} },
+                    data: { method: "post_user_task", ...{currentTask,"user_id":USERID,"challenge_id":CHALLENGE_ID,"score":score} },
                     dataType: "json",
                     success: function (response) {
                       console.log(response); //for better debugging
