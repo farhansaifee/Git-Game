@@ -1,6 +1,7 @@
 <?php
 $user = $db->getUser($_SESSION["user"]["ID"]);
 $challenges = $db->getAllChallenges();
+
 foreach($challenges as $challenge)
 ?>
         <div class="container" id="dashboardContainer">
@@ -28,7 +29,8 @@ foreach($challenges as $challenge)
                     <button class='back-button' id='back_button$index'><-Go Back</button>
                     <button class='back-button' id='start_over_button$index'>Start over</button>
                     </div>
-                </div>
+                    <div id='progress_{$challenge["id"]}'></div>
+                </div>  
             </div>";
         $index++;
         }

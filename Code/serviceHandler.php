@@ -58,7 +58,9 @@ else if($method!=null && $method=="post_user_task"){
     $currentTask = $_POST["currentTask"];
     $user_id = $_POST["user_id"];
     $challenge_id = $_POST["challenge_id"];
+    $score = intval($_POST["score"]);
     $db->editUserChallenge($currentTask,$user_id,$challenge_id);
+    $db->updateUserScore($user_id, $score);
     response("POST", 200, json_encode("Success"));
 }
 else if($method!=null && $method=="challenge_passed"){
