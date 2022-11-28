@@ -14,6 +14,7 @@ function popup($msg)
 include_once 'utility/DateTimeExt.class.php';
 include_once 'model/User.class.php';
 include_once 'utility/DB.class.php';
+include_once 'utility/LDAP.class.php';
 include_once 'utility/PW.class.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -45,6 +46,7 @@ $mail->Subject = 'Email for reseting password GitGame';
 $menu = isset($_GET["menu"]) ? $_GET["menu"] : NULL;
 
 $db = new DB($mail);
+$ldap = new LDAP();
 include_once 'utility/preHeader.php';
 ?>
 
