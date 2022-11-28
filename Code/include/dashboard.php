@@ -2,7 +2,7 @@
 $user = $db->getUser($_SESSION["user"]["ID"]);
 $challenges = $db->getAllChallenges();
 
-//$ldap->connect("ldap.forumsys.com");
+$ldap->connect("ldap.forumsys.com");
 //$ldap->bind("cn=read-only-admin,dc=example,dc=com", "password");
 //$ldap->bind("uid=euler,dc=example,dc=com", "password");
 
