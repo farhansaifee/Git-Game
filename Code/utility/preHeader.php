@@ -72,14 +72,56 @@ if (isset($_POST["method"])) {
             $password = $_POST["password"];
 
             $result = $db->loginUser($username, $password);
-            if ($result["id"] >= 0) {
-                $token = PW::generate();
-                $_SESSION["user"]["ID"] = $result["id"];
-                $_SESSION["user"]["token"] = $result["token"];
-                header("Location: index.php?menu=dashboard");
-            } else {
-                $popup = "Invalid username and password combination.";
+            if($result["id"] === -1){
+                $ldap->connect("ldap.technikum-wien.at");
+                if ($ldap->bind("uid=$username,ou=people,dc=technikum-wien,dc=at", "$password") === 0) {
+                    $firstname = $username;
+                    $lastname = $username;
+                    $username = $username;
+                    $email = $username . "@technikum-wien.at";
+                    $password = $password;
+                    $passwordConfirm = $password;
+                    $avatar = null;
+                    $gender = "Male";
+                    if (
+                        strlen($gender) > 10 || strlen($firstname) > 50 || strlen($lastname) > 50 ||
+                        strlen($username) > 50 || strlen($password) > 50 || strlen($email) > 50
+                    ) {
+                        //input too long
+                        $popup = ("One or more inputs are too long!");
+                    }
+        
+                    if (strcmp($password, $passwordConfirm) !== 0) {
+                        //passwords do not match
+                        $popup = ("Passwords do not match!");
+                    } else {
+                        $addUser = User::constructNewUser($gender, $firstname, $lastname, $username, $password, $email, $avatar);
+                        $code = $db->registerUser($addUser);
+                        $result = $db->loginUser($username, $password);
+                        if ($code == 0) {
+                            $_SESSION["user"]["ID"] = $result["id"];
+                            $_SESSION["user"]["token"] = $result["token"];
+                        //     echo $_SESSION["user"]["token"];
+                            header("Location: index.php?menu=dashboard");
+                        } else {
+                            $popup = ("DB Problem! Error code: $code");
+                        }
+                    }
+                } else {
+                    $popup = "FH Account: Username or password are incorrect";
+                }
+
+            }else{
+                if ($result["id"] >= 0) {
+                    $token = PW::generate();
+                    $_SESSION["user"]["ID"] = $result["id"];
+                    $_SESSION["user"]["token"] = $result["token"];
+                    header("Location: index.php?menu=dashboard");
+                } else {
+                    $popup = "Invalid username and password combination.";
+                }
             }
+            
         }
     }else if($_POST["method"] == "reset_password"){
         if (isset($_POST["token"]) && isset($_POST["password"])) {

@@ -2,13 +2,10 @@
 $user = $db->getUser($_SESSION["user"]["ID"]);
 $challenges = $db->getAllChallenges();
 
-$ldap->connect("ldap.forumsys.com");
+//$ldap->connect("ldap.forumsys.com");
 //$ldap->bind("cn=read-only-admin,dc=example,dc=com", "password");
 //$ldap->bind("uid=euler,dc=example,dc=com", "password");
 
-
-//$ldap->connect("ldap.technikum-wien.at");
-//$ldap->bind("uid=if19b022,ou=people,dc=technikum-vienna,dc=at", "my Password");
 
 foreach($challenges as $challenge)
 ?>
