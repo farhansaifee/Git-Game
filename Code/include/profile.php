@@ -1,5 +1,6 @@
 <?php
 $user = $db->getUser($_SESSION["user"]["ID"]);
+$score = $db->getScore($_SESSION["user"]["ID"]);
 ?>
 
 <div class="container">
@@ -60,6 +61,10 @@ $user = $db->getUser($_SESSION["user"]["ID"]);
               <h6>Gender</h6>
               <span class="text-secondary"><?php if ($user->getGender() == '') echo 'other';
                                             else echo $user->getGender() ?></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              <h6>Points</h6>
+              <span class="text-secondary"><?php echo $score; ?></span>
             </li>
 
           </ul>

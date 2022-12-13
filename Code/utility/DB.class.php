@@ -402,6 +402,35 @@ class DB
         } else {
             return -4;
         }
-        
+    }
+
+    public function getAllUserscores(){
+        $data = array();
+        $stmt = $this->conn->prepare("SELECT username,score FROM user");
+        $stmt->execute();
+
+        if ($stmt->rowCount() == 0) return $data = "NULL";
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            array_push($data, $row);
+        }
+        return $data;
+    }
+
+    public function getScore($id)
+    {
+        $stmt = $this->conn->prepare("SELECT score FROM user WHERE UserID=:id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        if (!$stmt->execute()) {
+            return -1;
+        }
+        $score = $stmt->fetchColumn();
+        if ($score == false) {
+            return -2;
+        } else {
+            return $score;
+        }
+        return $score;
     }
 }

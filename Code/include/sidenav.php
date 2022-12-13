@@ -5,6 +5,7 @@
 <!-- <a href="index.php?menu=highscore">Highscore</a> -->
     <a href="index.php?menu=profile">Profile</a>
     <a href="index.php?menu=contact">Contact</a>
+    <a href="index.php?menu=highscore">Highscore</a>
 </div>
 
 
